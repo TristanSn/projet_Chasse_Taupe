@@ -22,7 +22,7 @@ class Taupe extends React.Component {
     }
 
     render() {
-        const status = 'm';
+        const status = 'test';
 
         return (
             <div>
