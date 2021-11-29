@@ -1,5 +1,7 @@
 import React from "react";
-import image from './taupe.jpg';
+import taupe from './taupe.jpg';
+import terrier from './terrier.png';
+import {render} from "react-dom";
 
 /*class Taupe extends React.Component {
     render() {
@@ -8,245 +10,66 @@ import image from './taupe.jpg';
 }*/
 
 class Square extends React.Component {
-    render() {
-        return (
-            <button className="square" style={{background: "white"}}>
-
-            </button>
-        );
+    onClick(){
+        this.props.onClick(this.props.id)
     }
-}
-
-class Square2 extends React.Component {
     render() {
-        return (
-            <button className="square" style={{backgroundImage:"url(" + image + ")"/*background: this.props.couleurCase*/}}>
+        if (this.props.numero === this.props.id){
+            return (
+                <button id={this.props.id} className="square" style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
 
-            </button>
-        );
+                </button>
+            );
+        }else{
+            return (
+                <button id={this.props.id} className="square" style={{backgroundImage:"url(" + terrier + ")"}}>
+
+                </button>
+            );
+        }
     }
 }
 
 function getRandomInt() {
-    return Math.floor(Math.random() * 9);
+    return Math.floor(Math.random() * (9 - 1 + 1)) + 1;
 }
 
 class Taupe extends React.Component {
-    renderSquare(color) {
-        return <Square couleurCase={color} />;
+    constructor(props) {
+        super(props);
+        this.state = {taupePosition : getRandomInt()};
     }
 
-    renderSquare2() {
-        return <Square2/>;
+    renderSquare(id, numero) {
+        return <Square id={id} numero={numero} onClick={this.squareClicked.bind(this)}/>;
     }
 
+    squareClicked(id){
+        console.log(id)
+    }
+//setState
     render() {
         const status = 'Chasse Taupe';
-        let random = getRandomInt();
-
-        switch (random){
-            case 0:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare2()}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 1:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare2()}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 2:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare2()}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 3:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare2()}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 4:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare2()}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 5:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare2()}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 6:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare2()}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 7:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare2()}
-                            {this.renderSquare('red')}
-                        </div>
-                    </div>
-                );
-                break;
-            case 8:
-                return (
-                    <div>
-                        <div className="status">{status}</div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('blue')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                        </div>
-                        <div className="board-row">
-                            {this.renderSquare('red')}
-                            {this.renderSquare('red')}
-                            {this.renderSquare2()}
-                        </div>
-                    </div>
-                );
-                break;
-            default:
-                alert("erreur");
-                break;
-        }
+        return (
+            <div>
+                <div className="status"><h1>{status}</h1></div>
+                <div className="board-row">
+                    {this.renderSquare(1, this.state.taupePosition)}
+                    {this.renderSquare(2, this.state.taupePosition)}
+                    {this.renderSquare(3, this.state.taupePosition)}
+                </div>
+                <div className="board-row">
+                    {this.renderSquare(4, this.state.taupePosition)}
+                    {this.renderSquare(5, this.state.taupePosition)}
+                    {this.renderSquare(6, this.state.taupePosition)}
+                </div>
+                <div className="board-row">
+                    {this.renderSquare(7, this.state.taupePosition)}
+                    {this.renderSquare(8, this.state.taupePosition)}
+                    {this.renderSquare(9, this.state.taupePosition)}
+                </div>
+            </div>
+        );
     }
 }
 
