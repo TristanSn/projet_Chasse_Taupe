@@ -19,13 +19,32 @@
   text-align: center;
   width: 600px;
   background-size: cover;
-  cursor: url("marteauBois.png"), default; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+  cursor: url("marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
+.gauche{
+  float:left;
+  width: auto;
+  border-style: double;
+}
+.droite{
+  border-style: double;
+  float:right;
+  width: auto;
+}
+
+.ensemble{
+  width: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.status {
+  border-style: double;
 }
 
 .App-header {

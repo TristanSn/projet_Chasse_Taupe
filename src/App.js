@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Taupe from "./taupe";
+import Taupe from "./Taupe";
 import Time from "./Time";
 
 function App() {
@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Taupe/>
-          <Time time={10} timeToStop={Taupe}/>
       </header>
     </div>
   );

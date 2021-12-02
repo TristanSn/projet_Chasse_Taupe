@@ -2,6 +2,7 @@ import React from "react";
 import taupe from './taupe.jpg';
 import terrier from './terrier.png';
 import {render} from "react-dom";
+import Time from "./Time";
 
 /*class Taupe extends React.Component {
     render() {
@@ -45,7 +46,7 @@ function moins(chiffre) {
 class Taupe extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {taupePosition : getRandomInt(), life : 3, score : 0};
+        this.state = {taupePosition : getRandomInt(), life : 3, score : 0, leTemps : 0};
     }
 
     renderSquare(id, numero) {
@@ -70,31 +71,40 @@ class Taupe extends React.Component {
         this.state.taupePosition = getRandomInt();
         this.setState({
             taupePosition : getRandomInt(),
-            score : this.state.score + 10
+            score : this.state.score + 10,
         });
+        console.log(this.props.leTemps);
     }
 //setState
     render() {
         const status = 'Chasse Taupe';
         const score = 'Score : ' + this.state.score;
         return (
-            <div>
-                <div className="status"><h1>{status}</h1></div>
-                <div className="status"><h3>{score}</h3></div>
-                <div className="board-row">
-                    {this.renderSquare(1, this.state.taupePosition)}
-                    {this.renderSquare(2, this.state.taupePosition)}
-                    {this.renderSquare(3, this.state.taupePosition)}
+            <div className="ensemble">
+                <div className="status">
+                        <h1>{status}</h1>
                 </div>
-                <div className="board-row">
-                    {this.renderSquare(4, this.state.taupePosition)}
-                    {this.renderSquare(5, this.state.taupePosition)}
-                    {this.renderSquare(6, this.state.taupePosition)}
+                <div className="gauche">
+                    <div className="board-row">
+                        {this.renderSquare(1, this.state.taupePosition)}
+                        {this.renderSquare(2, this.state.taupePosition)}
+                        {this.renderSquare(3, this.state.taupePosition)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(4, this.state.taupePosition)}
+                        {this.renderSquare(5, this.state.taupePosition)}
+                        {this.renderSquare(6, this.state.taupePosition)}
+                    </div>
+                    <div className="board-row">
+                        {this.renderSquare(7, this.state.taupePosition)}
+                        {this.renderSquare(8, this.state.taupePosition)}
+                        {this.renderSquare(9, this.state.taupePosition)}
+                    </div>
                 </div>
-                <div className="board-row">
-                    {this.renderSquare(7, this.state.taupePosition)}
-                    {this.renderSquare(8, this.state.taupePosition)}
-                    {this.renderSquare(9, this.state.taupePosition)}
+                <div className="droite">
+                        <h1>Temps restant : </h1>
+                        <h1 id="recup"><Time time={10}/></h1>
+                        <h3>{score}</h3>
                 </div>
             </div>
         );

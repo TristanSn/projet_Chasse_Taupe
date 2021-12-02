@@ -21,7 +21,6 @@ class Time extends React.Component {
                 this.setState({
                     life : 0
                 })
-
             }
         }, 1000);
     }
@@ -29,7 +28,7 @@ class Time extends React.Component {
 
     render() {
         return (
-            <p>{this.state.time}</p>
+            this.state.time
         );
     }
 }
