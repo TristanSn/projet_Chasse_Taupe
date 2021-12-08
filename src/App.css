@@ -14,10 +14,10 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 600px;
-  height: 600px;
+  height: 650px;
   padding: 0;
   text-align: center;
-  width: 600px;
+  width: 650px;
   background-size: cover;
   cursor: url("marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
 }
@@ -35,12 +35,6 @@
 
 .ensemble{
   width: 50%;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .status {
@@ -64,13 +58,4 @@
 
 .board-row{
 
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

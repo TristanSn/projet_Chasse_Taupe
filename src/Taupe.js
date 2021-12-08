@@ -35,8 +35,12 @@ class Square extends React.Component {
     }
 }
 
-function getRandomInt() {
-    return Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+function getRandomInt(ancien) {
+    var rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+    while (rendu == ancien){
+        rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
+    }
+    return rendu;
 }
 
 function moins(chiffre) {
@@ -46,7 +50,20 @@ function moins(chiffre) {
 class Taupe extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {taupePosition : getRandomInt(), life : 3, score : 0, leTemps : 0};
+        this.state = {taupePosition : getRandomInt(0), life : 3, score : 0, leTemps : 0, tpsGagne : 0};
+    }
+
+    componentDidMount(){
+        setInterval(() => {
+            this.setState({
+                leTemps : document.getElementById("recup").innerHTML
+            })
+            if (this.state.leTemps == 0){
+                this.setState({
+                    taupePosition : 0
+                });
+            }
+        }, 100);
     }
 
     renderSquare(id, numero) {
@@ -54,7 +71,7 @@ class Taupe extends React.Component {
     }
 
     squareWrongClicked(id){
-        this.state.taupePosition = getRandomInt();
+        this.state.taupePosition = getRandomInt(this.state.taupePosition);
         this.setState({
             life : moins(this.state.life)
         });
@@ -68,34 +85,34 @@ class Taupe extends React.Component {
 
     squareClicked(id){
         console.log(id)
-        this.state.taupePosition = getRandomInt();
+        this.state.taupePosition = getRandomInt(this.state.taupePosition);
         this.setState({
-            taupePosition : getRandomInt(),
+            taupePosition : getRandomInt(this.state.taupePosition),
             score : this.state.score + 10,
+            tpsGagne : 0.25
         });
-        console.log(this.props.leTemps);
     }
 //setState
     render() {
-        const status = 'Chasse Taupe';
+        const titre = 'Top Position';
         const score = 'Score : ' + this.state.score;
         return (
             <div className="ensemble">
                 <div className="status">
-                        <h1>{status}</h1>
+                        <h1>{titre}</h1>
                 </div>
                 <div className="gauche">
-                    <div className="board-row">
+                    <div>
                         {this.renderSquare(1, this.state.taupePosition)}
                         {this.renderSquare(2, this.state.taupePosition)}
                         {this.renderSquare(3, this.state.taupePosition)}
                     </div>
-                    <div className="board-row">
+                    <div>
                         {this.renderSquare(4, this.state.taupePosition)}
                         {this.renderSquare(5, this.state.taupePosition)}
                         {this.renderSquare(6, this.state.taupePosition)}
                     </div>
-                    <div className="board-row">
+                    <div>
                         {this.renderSquare(7, this.state.taupePosition)}
                         {this.renderSquare(8, this.state.taupePosition)}
                         {this.renderSquare(9, this.state.taupePosition)}
@@ -103,7 +120,7 @@ class Taupe extends React.Component {
                 </div>
                 <div className="droite">
                         <h1>Temps restant : </h1>
-                        <h1 id="recup"><Time time={10}/></h1>
+                        <h1 id="recup">{<Time time={10} tpsPlus={this.state.tpsGagne}/>}</h1>
                         <h3>{score}</h3>
                 </div>
             </div>

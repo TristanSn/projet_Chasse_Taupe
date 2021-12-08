@@ -1,9 +1,5 @@
 import React from "react";
 
-function moins(chiffre) {
-    return chiffre - 1;
-}
-
 class Time extends React.Component {
 
     constructor(props) {
@@ -13,22 +9,28 @@ class Time extends React.Component {
 
     componentDidMount(){
         setInterval(() => {
-            if (this.state.time > 0) {
-                this.setState({
-                    time: this.state.time - 1
-                })
-            }else{
-                this.setState({
-                    life : 0
-                })
+            if (this.props.tpsPlus !== 1){
+                if (this.state.time > 0) {
+                    this.setState({
+                        time: this.state.time - 0.25
+                    })
+                }else{
+                    this.setState({
+
+                    })
+                }
             }
-        }, 1000);
+        }, 250);
     }
 
 
     render() {
+        let res = this.state.time.toFixed(0);
+        if (res < 0){
+            res = 0;
+        }
         return (
-            this.state.time
+            res
         );
     }
 }
