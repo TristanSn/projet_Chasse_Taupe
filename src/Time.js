@@ -9,7 +9,7 @@ class Time extends React.Component {
 
     componentDidMount(){
         setInterval(() => {
-            if (this.props.tpsPlus !== 1){
+            if (this.props.tpsPlus !== 0){
                 if (this.state.time > 0) {
                     this.setState({
                         time: this.state.time - 0.25
@@ -19,6 +19,11 @@ class Time extends React.Component {
 
                     })
                 }
+            }
+            if (this.props.vie === 0){
+                this.setState({
+                    time: 0
+                })
             }
         }, 250);
     }

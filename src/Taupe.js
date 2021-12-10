@@ -1,5 +1,5 @@
 import React from "react";
-import taupe from './taupe.jpg';
+import taupe from './taupe.png';
 import terrier from './terrier.png';
 import {render} from "react-dom";
 import Time from "./Time";
@@ -50,17 +50,35 @@ function moins(chiffre) {
 class Taupe extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {taupePosition : getRandomInt(0), life : 3, score : 0, leTemps : 0, tpsGagne : 0};
+        console.log("sdfgg")
+        this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, tpsGagne : 0, bestScore : 0, depart : 0};
+    }
+x
+    demarreJeu(){
+        console.log("ok")
+        document.getElementById('buttonStart').style.display = 'none';
+        this.setState({
+            depart : 1,
+            life : 3,
+            taupePosition : getRandomInt(0)
+        })
     }
 
     componentDidMount(){
         setInterval(() => {
+            if (this.state.score > this.state.bestScore){
+                this.setState({
+                    bestScore : this.state.score
+                })
+            }
             this.setState({
                 leTemps : document.getElementById("recup").innerHTML
             })
             if (this.state.leTemps == 0){
+                document.getElementById('buttonStart').style.display = 'block';
                 this.setState({
-                    taupePosition : 0
+                    taupePosition : 0,
+                    depart : 0
                 });
             }
         }, 100);
@@ -72,15 +90,21 @@ class Taupe extends React.Component {
 
     squareWrongClicked(id){
         this.state.taupePosition = getRandomInt(this.state.taupePosition);
-        this.setState({
-            life : moins(this.state.life)
-        });
+        if (this.state.life !== 0){
+            this.setState({
+                life : moins(this.state.life)
+            });
+        }
+        if (this.state.life === 0){
+            this.setState({
+                depart : 0
+            });
+        }
         if (this.state.life <= 1){
             this.setState({
                 taupePosition : 0
             });
         }
-        console.log(this.state.life);
     }
 
     squareClicked(id){
@@ -99,7 +123,7 @@ class Taupe extends React.Component {
         return (
             <div className="ensemble">
                 <div className="status">
-                        <h1>{titre}</h1>
+                        <h1 id="titre">{titre}</h1>
                 </div>
                 <div className="gauche">
                     <div>
@@ -120,8 +144,16 @@ class Taupe extends React.Component {
                 </div>
                 <div className="droite">
                         <h1>Temps restant : </h1>
-                        <h1 id="recup">{<Time time={10} tpsPlus={this.state.tpsGagne}/>}</h1>
+                        <h1 id="recup">{<Time time={10} tpsPlus={this.state.depart} vie={this.state.life}/>}</h1>
                         <h3>{score}</h3>
+                    <div className="droite">
+                        <h1>Meilleur score :</h1>
+                        <h1>{this.state.bestScore}</h1>
+                    </div>
+                    <div>
+                        <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"><h1></h1></button></div>
+                        <div><h1 id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</h1></div>
+                    </div>
                 </div>
             </div>
         );
