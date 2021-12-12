@@ -8,13 +8,13 @@
 }
 
 #nbrVie{
-  margin-top: 160px;
-  margin-bottom: 145px;
+  margin-top: 140px;
+  margin-bottom: 140px;
 }
 
 #buttonStart{
-  margin-top: 100px;
-  margin-bottom: 90px;
+  margin-top: 80px;
+  margin-bottom: 60px;
   float: left;
   width: 600px;
   height: 300px;
@@ -28,16 +28,15 @@
   font-size: 24px;
   font-weight: bold;
   line-height: 600px;
-  height: 668px;
+  height: 660px;
   padding: 0;
   text-align: center;
-  width: 668px;
+  width: 660px;
   background-size: cover;
   cursor: url("marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
 }
 
 .gauche{
-  background-image: url("herbeArriere.jpg");
   float:left;
   width: auto;
   border-style: double;
@@ -49,7 +48,7 @@
 }
 
 .ensemble{
-  width: 50%;
+  width: 3050px;
   border-style: double;
 }
 

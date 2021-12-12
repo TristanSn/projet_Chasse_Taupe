@@ -51,7 +51,7 @@ class Taupe extends React.Component {
     constructor(props) {
         super(props);
         console.log("sdfgg")
-        this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, tpsGagne : 0, bestScore : 0, depart : 0};
+        this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, bestScore : 0, depart : 0};
     }
 x
     demarreJeu(){
@@ -60,6 +60,7 @@ x
         this.setState({
             depart : 1,
             life : 3,
+            score : 0,
             taupePosition : getRandomInt(0)
         })
     }
@@ -89,21 +90,23 @@ x
     }
 
     squareWrongClicked(id){
-        this.state.taupePosition = getRandomInt(this.state.taupePosition);
-        if (this.state.life !== 0){
-            this.setState({
-                life : moins(this.state.life)
-            });
-        }
-        if (this.state.life === 0){
-            this.setState({
-                depart : 0
-            });
-        }
-        if (this.state.life <= 1){
-            this.setState({
-                taupePosition : 0
-            });
+        if (this.state.depart !== 0){
+            this.state.taupePosition = getRandomInt(this.state.taupePosition);
+            if (this.state.life !== 0){
+                this.setState({
+                    life : moins(this.state.life)
+                });
+            }
+            if (this.state.life === 0){
+                this.setState({
+                    depart : 0
+                });
+            }
+            if (this.state.life <= 1){
+                this.setState({
+                    taupePosition : 0
+                });
+            }
         }
     }
 
