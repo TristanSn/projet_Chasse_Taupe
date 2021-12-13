@@ -61,6 +61,7 @@ x
             depart : 1,
             life : 3,
             score : 0,
+            leTemps : 4,
             taupePosition : getRandomInt(0)
         })
     }
@@ -82,7 +83,7 @@ x
                     depart : 0
                 });
             }
-        }, 100);
+        }, 300);
     }
 
     renderSquare(id, numero) {
@@ -156,9 +157,6 @@ x
                     <div>
                         <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"></button></div>
                         <div><h1 id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</h1></div>
-                        <h1>Temps : {this.state.leTemps}</h1>
-                        <h1>Compteur : {this.state.compteur}</h1>
-                        <h1>Depart : {this.state.depart}</h1>
                     </div>
                 </div>
             </div>
