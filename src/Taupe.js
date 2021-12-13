@@ -19,7 +19,7 @@ class Square extends React.Component {
         this.props.onClick2(this.props.id)
     }
     render() {
-        if (this.props.numero === this.props.id){
+        if (this.props.numero == this.props.id){
             return (
                 <button id={this.props.id} className="square" style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
 
@@ -51,7 +51,7 @@ class Taupe extends React.Component {
     constructor(props) {
         super(props);
         console.log("sdfgg")
-        this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, bestScore : 0, depart : 0};
+        this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, bestScore : 0, depart : 0, compteur : 10};
     }
 x
     demarreJeu(){
@@ -90,14 +90,14 @@ x
     }
 
     squareWrongClicked(id){
-        if (this.state.depart !== 0){
+        if (this.state.depart != 0){
             this.state.taupePosition = getRandomInt(this.state.taupePosition);
-            if (this.state.life !== 0){
+            if (this.state.life != 0){
                 this.setState({
                     life : moins(this.state.life)
                 });
             }
-            if (this.state.life === 0){
+            if (this.state.life == 0){
                 this.setState({
                     depart : 0
                 });
@@ -147,15 +147,18 @@ x
                 </div>
                 <div className="droite">
                         <h1>Temps restant : </h1>
-                        <h1 id="recup">{<Time time={10} tpsPlus={this.state.depart} vie={this.state.life}/>}</h1>
+                        <h1 id="recup">{<Time time={this.state.compteur} depart={this.state.depart} vie={this.state.life}/>}</h1>
                         <h3>{score}</h3>
                     <div className="droite">
                         <h1>Meilleur score :</h1>
                         <h1>{this.state.bestScore}</h1>
                     </div>
                     <div>
-                        <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"><h1></h1></button></div>
+                        <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"></button></div>
                         <div><h1 id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</h1></div>
+                        <h1>Temps : {this.state.leTemps}</h1>
+                        <h1>Compteur : {this.state.compteur}</h1>
+                        <h1>Depart : {this.state.depart}</h1>
                     </div>
                 </div>
             </div>

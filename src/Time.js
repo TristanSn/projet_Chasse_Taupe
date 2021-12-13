@@ -4,13 +4,16 @@ class Time extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {time : this.props.time};
+        this.state = {time : this.props.time, retourDefaultGame : 0};
     }
 
     componentDidMount(){
-        if (this.state.time.toFixed(0) !== 0){
-            this.intervalID = setInterval(() => {
-                if (this.props.tpsPlus !== 0){
+        //if (this.state.time.toFixed(0) !== 0){
+            setInterval(() => {
+                if (this.props.depart != 0){
+                    this.setState({
+                        retourDefaultGame : 0,
+                    })
                     if (this.state.time > 0) {
                         this.setState({
                             time: this.state.time - 0.25
@@ -21,25 +24,42 @@ class Time extends React.Component {
                         })
                     }
                 }
-                if (this.props.vie === 0){
+                if (this.props.vie == 0 || this.state.time.toFixed(0) == 0){
                     this.setState({
-                        time: 0
+                        retourDefaultGame : 1,
+                        time : 10
                     })
                 }
+                console.log("tj ok");
+                this.forceUpdate();
             }, 250);
-        }else{
-            clearInterval(this.intervalID);
-        }
+        //}
     }
+
+    /*componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.state.time.toFixed(0) == 0){
+            if (this.props.depart != 0){
+                this.setState({
+                    time: 10
+                })
+            }
+        }
+    }*/
 
     render() {
         let res = this.state.time.toFixed(0);
         if (res < 0){
             res = 0;
         }
-        return (
-            res
-        );
+        if (this.state.retourDefaultGame == 1){
+            return (
+                0
+            );
+        }else{
+            return (
+                res
+            );
+        }
     }
 }
 
