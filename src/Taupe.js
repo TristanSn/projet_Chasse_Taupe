@@ -37,9 +37,11 @@ class Square extends React.Component {
 
 function getRandomInt(ancien) {
     var rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
-    while (rendu == ancien){
+    while (rendu.toString() == ancien.toString()){
         rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
     }
+    console.log("ancien " + ancien);
+    console.log("nouveau " + rendu);
     return rendu;
 }
 
@@ -83,7 +85,7 @@ x
                     depart : 0
                 });
             }
-        }, 300);
+        }, 250);
     }
 
     renderSquare(id, numero) {
@@ -112,12 +114,9 @@ x
     }
 
     squareClicked(id){
-        console.log(id)
-        this.state.taupePosition = getRandomInt(this.state.taupePosition);
         this.setState({
             taupePosition : getRandomInt(this.state.taupePosition),
             score : this.state.score + 10,
-            tpsGagne : 0.25
         });
     }
 //setState
@@ -147,16 +146,16 @@ x
                     </div>
                 </div>
                 <div className="droite">
-                        <h1>Temps restant : </h1>
-                        <h1 id="recup">{<Time time={this.state.compteur} depart={this.state.depart} vie={this.state.life}/>}</h1>
-                        <h3>{score}</h3>
-                    <div className="droite">
-                        <h1>Meilleur score :</h1>
-                        <h1>{this.state.bestScore}</h1>
+                        <p>Temps restant : </p>
+                        <p id="recup">{<Time time={this.state.compteur} depart={this.state.depart} vie={this.state.life}/>}</p>
+                        <p>{score}</p>
+                    <div>
+                        <p>Meilleur score :</p>
+                        <p>{this.state.bestScore}</p>
                     </div>
                     <div>
                         <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"></button></div>
-                        <div><h1 id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</h1></div>
+                        <div><p id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</p></div>
                     </div>
                 </div>
             </div>

@@ -30,7 +30,6 @@ class Time extends React.Component {
                         time : 10
                     })
                 }
-                console.log("tj ok");
                 this.forceUpdate();
             }, 250);
         //}
