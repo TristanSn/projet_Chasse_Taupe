@@ -19,15 +19,16 @@ class Square extends React.Component {
         this.props.onClick2(this.props.id)
     }
     render() {
+        var ok = "square curs5"
         if (this.props.numero == this.props.id){
             return (
-                <button id={this.props.id} className="square" style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
+                <button id={this.props.id} className={ok} style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
 
                 </button>
             );
         }else{
             return (
-                <button id={this.props.id} className="square" style={{backgroundImage:"url(" + terrier + ")"}} onClick={this.onClick2.bind(this)}>
+                <button id={this.props.id} className="square curs + 2" style={{backgroundImage:"url(" + terrier + ")"}} onClick={this.onClick2.bind(this)}>
 
                 </button>
             );
@@ -154,10 +155,10 @@ x
                         <p>{this.state.bestScore}</p>
                     </div>
                     <div>
-                        <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"></button></div>
-                        <div><p id="nbrVie" style={{float:"right"}}>VIE : {this.state.life}</p></div>
+                        <div><p id="nbrVie">VIE : {this.state.life}</p></div>
                     </div>
                 </div>
+                <div><button onClick={this.demarreJeu.bind(this)} id="buttonStart"></button></div>
             </div>
         );
     }

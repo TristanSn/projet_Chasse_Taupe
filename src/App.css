@@ -15,44 +15,70 @@
 #buttonStart{
   /*margin-top: 80px;
   margin-bottom: 60px;*/
+  border: 1px;
   float: left;
-  width: 200px;
+  width: 350px;
   height: 100px;
   background-image: url("start.png");
-  background-size: cover;
+
  }
 
 .square {
-  border: 1px solid #999;
+  border: 0px;
   float: left;
   font-size: 24px;
   font-weight: bold;
-  line-height: 600px;
-  height: 200px;
+  height: 183px;
   padding: 0;
   text-align: center;
-  width: 200px;
+  width: 183px;
   background-size: cover;
-  cursor: url("marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
 }
+
+.curs1{
+  cursor: url("marteau/marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
+.curs2{
+  cursor: url("marteau/marteauBronze.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
+.curs3{
+  cursor: url("marteau/marteauArgent.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
+.curs4{
+  cursor: url("marteau/marteauOr.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
+.curs5{
+  cursor: url("marteau/marteauThor.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+}
+
 
 .gauche{
   float:left;
   width: 550px;
-  max-height: 550px;
-  border-style: double;
+  height: 550px;
+  border-style: solid;
 }
 .droite{
-  border-style: double;
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+  border-color: white;
+  border-style: solid;
   float:right;
   width: 350px;
-  max-height: 550px;
+  height: 450px;
+  background-image: url("thor.jpg");
+  background-size: cover;
 }
 
 .ensemble{
-  width: 960px;
-  height: 750px;
-  border-style: double;
+  width: auto;
+  height: auto;
+  border-style: solid;
 }
 
 .titre{
@@ -60,8 +86,10 @@
 }
 
 .status {
-  border-style: double;
-  border-color: transparent;
+  font-size: 20px;
+  width: 902px;
+  height: 100px;
+  border: 0px;
   background-image: url("herbe.png");
   background-size: cover;
 }
