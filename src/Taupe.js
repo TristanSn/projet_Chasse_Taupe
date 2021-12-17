@@ -19,16 +19,15 @@ class Square extends React.Component {
         this.props.onClick2(this.props.id)
     }
     render() {
-        var ok = "square curs5"
         if (this.props.numero == this.props.id){
             return (
-                <button id={this.props.id} className={ok} style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
+                <button id={this.props.id} className={this.props.designMarteau} style={{backgroundImage:"url(" + taupe + ")"}} onClick={this.onClick.bind(this)}>
 
                 </button>
             );
         }else{
             return (
-                <button id={this.props.id} className="square curs + 2" style={{backgroundImage:"url(" + terrier + ")"}} onClick={this.onClick2.bind(this)}>
+                <button id={this.props.id} className={this.props.designMarteau} style={{backgroundImage:"url(" + terrier + ")"}} onClick={this.onClick2.bind(this)}>
 
                 </button>
             );
@@ -89,8 +88,8 @@ x
         }, 250);
     }
 
-    renderSquare(id, numero) {
-        return <Square id={id} numero={numero} onClick={this.squareClicked.bind(this)} onClick2={this.squareWrongClicked.bind(this)}/>;
+    renderSquare(id, numero, designMarteau) {
+        return <Square id={id} numero={numero} designMarteau={designMarteau} onClick={this.squareClicked.bind(this)} onClick2={this.squareWrongClicked.bind(this)}/>;
     }
 
     squareWrongClicked(id){
@@ -124,6 +123,21 @@ x
     render() {
         const titre = 'Top Position';
         const score = 'Score : ' + this.state.score;
+        var design = "square curs1";
+        var easterEgg = "droite";
+        if ((this.state.score >= 50 && this.state.score < 100) || (this.state.bestScore >= 50 && this.state.bestScore < 100)){
+            design = "square curs2";
+        }
+        if ((this.state.score >= 100 && this.state.score < 150) || (this.state.bestScore >= 100 && this.state.bestScore < 150)){
+            design = "square curs3";
+        }
+        if ((this.state.score >= 150 && this.state.score < 200) || (this.state.bestScore >= 150 && this.state.bestScore < 200)){
+            design = "square curs4";
+        }
+        if ((this.state.score >= 200) || (this.state.bestScore >= 200)){
+            design = "square curs5";
+            easterEgg = "droite easter-egg"
+        }
         return (
             <div className="ensemble">
                 <div className="status">
@@ -131,22 +145,22 @@ x
                 </div>
                 <div className="gauche">
                     <div>
-                        {this.renderSquare(1, this.state.taupePosition)}
-                        {this.renderSquare(2, this.state.taupePosition)}
-                        {this.renderSquare(3, this.state.taupePosition)}
+                        {this.renderSquare(1, this.state.taupePosition, design)}
+                        {this.renderSquare(2, this.state.taupePosition, design)}
+                        {this.renderSquare(3, this.state.taupePosition, design)}
                     </div>
                     <div>
-                        {this.renderSquare(4, this.state.taupePosition)}
-                        {this.renderSquare(5, this.state.taupePosition)}
-                        {this.renderSquare(6, this.state.taupePosition)}
+                        {this.renderSquare(4, this.state.taupePosition, design)}
+                        {this.renderSquare(5, this.state.taupePosition, design)}
+                        {this.renderSquare(6, this.state.taupePosition, design)}
                     </div>
                     <div>
-                        {this.renderSquare(7, this.state.taupePosition)}
-                        {this.renderSquare(8, this.state.taupePosition)}
-                        {this.renderSquare(9, this.state.taupePosition)}
+                        {this.renderSquare(7, this.state.taupePosition, design)}
+                        {this.renderSquare(8, this.state.taupePosition, design)}
+                        {this.renderSquare(9, this.state.taupePosition, design)}
                     </div>
                 </div>
-                <div className="droite">
+                <div className={easterEgg}>
                         <p>Temps restant : </p>
                         <p id="recup">{<Time time={this.state.compteur} depart={this.state.depart} vie={this.state.life}/>}</p>
                         <p>{score}</p>

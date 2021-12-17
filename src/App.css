@@ -65,12 +65,16 @@
 .droite{
   font-size: 30px;
   font-weight: bold;
-  color: red;
+  color: white;
   border-color: white;
   border-style: solid;
   float:right;
   width: 350px;
   height: 450px;
+}
+
+.easter-egg{
+  color: gold;
   background-image: url("thor.jpg");
   background-size: cover;
 }
