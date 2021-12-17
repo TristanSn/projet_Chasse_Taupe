@@ -13,8 +13,6 @@
 }
 
 #buttonStart{
-  /*margin-top: 80px;
-  margin-bottom: 60px;*/
   border: 1px;
   float: left;
   width: 350px;
@@ -22,7 +20,7 @@
   background-image: url("start.png");
 
  }
-
+/*square est la classe pour les boutons (donc la taupe et les terriers)*/
 .square {
   border: 0px;
   float: left;
@@ -34,34 +32,34 @@
   width: 183px;
   background-size: cover;
 }
-
+/*Ici tous les curs correspondent à des palier à atteindre pour avoir un nouveau skin de marteau (nouveau visuel de la souris)*/
 .curs1{
   cursor: url("marteau/marteauBois.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
 }
 
 .curs2{
-  cursor: url("marteau/marteauBronze.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+  cursor: url("marteau/marteauBronze.png") 25 20, auto;
 }
 
 .curs3{
-  cursor: url("marteau/marteauArgent.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+  cursor: url("marteau/marteauArgent.png") 25 20, auto;
 }
 
 .curs4{
-  cursor: url("marteau/marteauOr.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+  cursor: url("marteau/marteauOr.png") 25 20, auto;
 }
 
 .curs5{
-  cursor: url("marteau/marteauThor.png") 25 20, auto; /*"https://img.icons8.com/dusk/128/000000/auction.png"*/
+  cursor: url("marteau/marteauThor.png") 25 20, auto;
 }
-
-
+/*gauche met tous les élément de la zone de jeu à gauche (taupe et terriers)*/
 .gauche{
   float:left;
   width: 550px;
   height: 550px;
   border-style: solid;
 }
+/*droite met les élément d'information à droite (score, vie...)*/
 .droite{
   font-size: 30px;
   font-weight: bold;
@@ -72,13 +70,14 @@
   width: 350px;
   height: 450px;
 }
-
+/*tout est dans le nom, atteignez 200 points pour le voir (vous êtes en version difficile
+pour une version avec l'objectif de 150 point utiliser la version "2.8 //Version Final Easy" disponible sur github*/
 .easter-egg{
-  color: gold;
+  color: darkgreen;
   background-image: url("thor.jpg");
   background-size: cover;
 }
-
+/*correspond au div qui contient l'ensemble des éléments*/
 .ensemble{
   width: auto;
   height: auto;
@@ -88,7 +87,7 @@
 .titre{
   color: black;
 }
-
+/*status correspond à la présentation en haut pour le titre*/
 .status {
   font-size: 20px;
   width: 902px;
@@ -99,7 +98,6 @@
 }
 
 .App-header {
-
   min-height: 100vh;
   display: flex;
   flex-direction: column;

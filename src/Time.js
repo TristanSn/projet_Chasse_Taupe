@@ -6,7 +6,7 @@ class Time extends React.Component {
         super(props);
         this.state = {time : this.props.time, retourDefaultGame : 0};
     }
-
+    /*compte à rebour*/
     componentDidMount(){
         //if (this.state.time.toFixed(0) !== 0){
             setInterval(() => {

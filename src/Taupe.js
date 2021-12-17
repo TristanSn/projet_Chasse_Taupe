@@ -9,7 +9,7 @@ import Time from "./Time";
         return<h1>Test composant</h1>
     }
 }*/
-
+/*square sert à créer les terriers et la taupe*/
 class Square extends React.Component {
     onClick(){
         this.props.onClick(this.props.id)
@@ -34,17 +34,15 @@ class Square extends React.Component {
         }
     }
 }
-
+/*cette fonction sert à ne pas retomber sur le numéro 10 fois de suite*/
 function getRandomInt(ancien) {
     var rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
     while (rendu.toString() == ancien.toString()){
         rendu = Math.floor(Math.random() * (9 - 1 + 1)) + 1;
     }
-    console.log("ancien " + ancien);
-    console.log("nouveau " + rendu);
     return rendu;
 }
-
+/*moins sert pour perdre une vie en jeu*/
 function moins(chiffre) {
     return chiffre - 1;
 }
@@ -52,12 +50,19 @@ function moins(chiffre) {
 class Taupe extends React.Component {
     constructor(props) {
         super(props);
-        console.log("sdfgg")
         this.state = {taupePosition : 0, life : 3, score : 0, leTemps : 0, bestScore : 0, depart : 0, compteur : 10};
+        /*
+        taupePosition = position de la taupe
+        life = nombre de vie (3)
+        score = le score de la partie
+        leTemps = recup valeur compte à rebours
+        bestScore = meilleur score effectué
+        depart = pour signaler quand lancer le compte à rebours et donc le jeu
+        compteur = le temps de la partie régler pile pour réussir l'objectif des 200 points du défi spécial en mode difficile (bonne chance)
+        */
     }
-x
+    /*comme son nom l'indique demarreJeu lance la partie*/
     demarreJeu(){
-        console.log("ok")
         document.getElementById('buttonStart').style.display = 'none';
         this.setState({
             depart : 1,
@@ -67,7 +72,7 @@ x
             taupePosition : getRandomInt(0)
         })
     }
-
+    /*mise à jour du score et recup du temps*/
     componentDidMount(){
         setInterval(() => {
             if (this.state.score > this.state.bestScore){
@@ -91,7 +96,7 @@ x
     renderSquare(id, numero, designMarteau) {
         return <Square id={id} numero={numero} designMarteau={designMarteau} onClick={this.squareClicked.bind(this)} onClick2={this.squareWrongClicked.bind(this)}/>;
     }
-
+    /*méthode appeler si on clique sur un terrier et non une taupe ce qui fait perdre un vie, changer la place de la taupe*/
     squareWrongClicked(id){
         if (this.state.depart != 0){
             this.state.taupePosition = getRandomInt(this.state.taupePosition);
@@ -112,15 +117,16 @@ x
             }
         }
     }
-
+    /*ici c'est la méthode pour quand on tape la taupe, donc +10 points, et taupe change de place*/
     squareClicked(id){
         this.setState({
             taupePosition : getRandomInt(this.state.taupePosition),
             score : this.state.score + 10,
         });
     }
-//setState
+
     render() {
+        //ce qui suit c'est pour changer le skin du marteau en fonction de son score
         const titre = 'Top Position';
         const score = 'Score : ' + this.state.score;
         var design = "square curs1";
