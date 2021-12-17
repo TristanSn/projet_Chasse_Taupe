@@ -131,16 +131,16 @@ class Taupe extends React.Component {
         const score = 'Score : ' + this.state.score;
         var design = "square curs1";
         var easterEgg = "droite";
-        if ((this.state.score >= 50 && this.state.score < 100) || (this.state.bestScore >= 50 && this.state.bestScore < 100)){
+        if ((this.state.score >= 50 && this.state.score < 80) || (this.state.bestScore >= 50 && this.state.bestScore < 80)){
             design = "square curs2";
         }
-        if ((this.state.score >= 100 && this.state.score < 150) || (this.state.bestScore >= 100 && this.state.bestScore < 150)){
+        if ((this.state.score >= 80 && this.state.score < 120) || (this.state.bestScore >= 80 && this.state.bestScore < 120)){
             design = "square curs3";
         }
-        if ((this.state.score >= 150 && this.state.score < 200) || (this.state.bestScore >= 150 && this.state.bestScore < 200)){
+        if ((this.state.score >= 120 && this.state.score < 150) || (this.state.bestScore >= 120 && this.state.bestScore < 150)){
             design = "square curs4";
         }
-        if ((this.state.score >= 200) || (this.state.bestScore >= 200)){
+        if ((this.state.score >= 150) || (this.state.bestScore >= 150)){
             design = "square curs5";
             easterEgg = "droite easter-egg"
         }

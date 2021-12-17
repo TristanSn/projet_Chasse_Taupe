@@ -70,8 +70,9 @@
   width: 350px;
   height: 450px;
 }
-/*tout est dans le nom, atteignez 200 points pour le voir (vous êtes en version difficile
-pour une version avec l'objectif de 150 point utiliser la version "2.8 //Version Final Easy" disponible sur github*/
+/*tout est dans le nom, atteignez 150 points pour le voir
+(ou 200 si vous voulez vraiment jouer, il y a la version difficile
+sur gitHub à télécharger il s'agit de la version "2.7 // Version Final Hard"*/
 .easter-egg{
   color: darkgreen;
   background-image: url("thor.jpg");
